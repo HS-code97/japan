@@ -152,7 +152,7 @@
           <button data-team="girls">🎀 소녀팀</button>
           <button data-team="boy">🎮 소년팀</button>
         </div>
-        <p class="team-note">${team === "girls" ? "🎀 소녀팀: 중3 딸 3명 + 어른 5명 → 오타루" : team === "boy" ? "🎮 소년팀: 중1 아들 + 어른 1명 → 점프대·포켓몬·게임" : "오전~오후는 두 팀으로 나뉘고, 17시 이후 삿포로역에서 합류해요."}</p>` : ""}
+        <p class="team-note">${team === "girls" ? "🎀 소녀팀: 중2 딸 3명 + 어른 5명 → 오타루" : team === "boy" ? "🎮 소년팀: 초4 아들 + 어른 1명 → 점프대·포켓몬·게임" : "오전~오후는 두 팀으로 나뉘고, 17시 이후 삿포로역에서 합류해요."}</p>` : ""}
       <div class="timeline">
         ${items.map((it, k) => {
           const p = it.place && PLACES[it.place];
@@ -264,7 +264,7 @@
   function menuHTML(p) {
     return `<div class="menu-grid">
       <div class="menu-col a"><h5>👨‍👩 어른 6명</h5><ul>${p.menu.adult.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>
-      <div class="menu-col t"><h5>🎒 중학생 4명</h5><ul>${p.menu.teen.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>
+      <div class="menu-col t"><h5>🎒 아이 4명 (중2·초4)</h5><ul>${p.menu.teen.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>
     </div>`;
   }
 
