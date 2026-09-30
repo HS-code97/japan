@@ -10,10 +10,14 @@ const TRIP = {
   title: "삿포로, 겨울 동화",
   start: "2027-01-08T13:30:00+09:00",
   end: "2027-01-12T16:55:00+09:00",
-  stay: "미나미 4조 니시 11초메 (에어비앤비)",
+  stay: "Snow Light Hotel Sapporo (에어비앤비) · 南4条西11丁目1291-13",
   members: { adult: 6, girlsMiddle2: 3, boyElem4: 1 },
-  hero: W + "d/d9/City_nightscape_of_Sapporo_from_Mt._Moiwa_20260703b.jpg/960px-City_nightscape_of_Sapporo_from_Mt._Moiwa_20260703b.jpg",
-  heroFile: "City_nightscape_of_Sapporo_from_Mt._Moiwa_20260703b.jpg",
+  // 첫 화면 배경: 접속할 때마다 랜덤으로 시작해 천천히 돌아가며 바뀜
+  heroes: [
+    { src: W + "d/d9/City_nightscape_of_Sapporo_from_Mt._Moiwa_20260703b.jpg/960px-City_nightscape_of_Sapporo_from_Mt._Moiwa_20260703b.jpg", file: "City_nightscape_of_Sapporo_from_Mt._Moiwa_20260703b.jpg", pos: "center 60%" },
+    { src: W + "8/82/Winter_Night-_Sapporo_TV_Tower.JPG/960px-Winter_Night-_Sapporo_TV_Tower.JPG", file: "Winter_Night-_Sapporo_TV_Tower.JPG", pos: "center 40%" },
+    { src: W + "4/46/Otaru_Canal_Night.jpg/960px-Otaru_Canal_Night.jpg", file: "Otaru_Canal_Night.jpg", pos: "45% center" },
+  ],
 };
 
 /* ---------------------------------------------------------
@@ -23,11 +27,11 @@ const TRIP = {
 const PLACES = {
   /* ---------- 숙소 ---------- */
   airbnb: {
-    type: "stay", emoji: "🏠", name: "우리 숙소 (에어비앤비)", jp: "南4条西11丁目",
+    type: "stay", emoji: "🏠", name: "Snow Light Hotel Sapporo (우리 숙소·에어비앤비)", jp: "南4条西11丁目1291-13",
     lat: 43.0537, lng: 141.3405, area: "삿포로 추오구",
-    desc: "1~3일차 베이스캠프. 스스키노·다누키코지까지 걸어서 12~15분, 지하철 도자이선 니시11초메역 도보 약 8분, 노면전차 ‘추오쿠야쿠쇼마에’ 도보 약 5분.",
-    tips: ["정확한 주소는 호스트에게 받으면 이 카드를 업데이트하세요", "택시 기사님께 주소(일본어)를 캡처해서 보여주면 끝", "근처 세이코마트(홋카이도 편의점)에서 아침거리 조달"],
-    q: "南4条西11丁目 札幌",
+    desc: "1~3일차 베이스캠프(에어비앤비). 스스키노·다누키코지까지 걸어서 12~15분, 지하철 도자이선 니시11초메역 도보 약 8분, 노면전차 ‘추오쿠야쿠쇼마에’ 도보 약 5분. 삿포로 프린스호텔(공항버스 하차 지점)까지는 도보 약 5분.",
+    tips: ["셀프 체크인 안내(도어락 번호·열쇠 보관함)를 호스트에게 미리 받아 단톡방에 저장하고, 도착이 20시 전후임을 사전에 알려두세요", "택시 기사님께 주소(일본어)를 캡처해서 보여주면 끝", "근처 세이코마트(홋카이도 편의점)에서 아침거리 조달"],
+    q: "札幌市中央区南4条西11丁目1291-13",
   },
   hanamomiji: {
     type: "stay", emoji: "♨️", name: "조잔케이 하나모미지", jp: "定山渓 花もみじ",
@@ -184,9 +188,9 @@ const PLACES = {
     type: "food", emoji: "🍜", name: "에비소바 이치겐 (새우 라멘)", jp: "えびそば一幻 総本店",
     img: W + "2/25/Sapporo_miso_ramen.jpg/960px-Sapporo_miso_ramen.jpg", credit: "Sapporo_miso_ramen.jpg",
     imgNote: "사진은 삿포로 미소라멘 (참고 이미지)",
-    lat: 43.0513, lng: 141.3455, area: "숙소에서 도보 약 8분",
-    desc: "새우 머리를 우려낸 진한 국물로 유명한 삿포로 대표 라멘집. 늦게까지 영업해서 도착 첫날 저녁에 딱.",
-    tips: ["국물 농도 3단계: 소노마마(진하게)·호도호도(중간)·앗사리(연하게)", "대기줄이 있으니 2~3팀으로 나눠 앉기", "영업시간·휴무일 출발 전 확인"],
+    lat: 43.0513, lng: 141.3455, area: "숙소에서 도보 약 6~8분",
+    desc: "새우 머리를 우려낸 진한 국물로 유명한 삿포로 대표 라멘집. 11:00~익일 03:00 영업(불규칙 휴무)이라 늦게 도착하는 첫날 저녁에 딱.",
+    tips: ["국물 농도 3단계: 소노마마(진하게)·호도호도(중간)·앗사리(연하게)", "카운터 16석뿐이라 10명이 함께 앉기 어려워요. 2~3팀으로 나눠 입장하세요 (유아용 의자·대기 공간 있음)", "불규칙 휴무라 출발 전 공식 페이지나 구글맵으로 확인"],
     q: "えびそば一幻 総本店",
     menu: {
       adult: ["🦐 에비미소 (새우 된장) — 국물 ‘소노마마’", "🦐 에비쇼유 + 새우밥(에비메시)", "🍺 삿포로 클래식 (홋카이도 한정 맥주)"],
@@ -372,10 +376,10 @@ const DAYS = [
     items: [
       { time: "13:30", icon: "🛫", title: "인천 출발", text: "여권 · Visit Japan Web QR · 엔화 확인! 기내에서 푹 자두기.", team: "all" },
       { time: "16:30", icon: "🛬", title: "신치토세 공항 도착", text: "입국심사·짐 찾기 약 1시간. 도착하면 이미 해가 진 눈의 나라. 국내선 쪽 ‘JR 신치토세공항역’으로 이동.", place: "cts", team: "all" },
-      { time: "17:45", icon: "🚆", title: "JR 쾌속 에어포트 → 삿포로역", text: "약 37분, 편도 어른 약 ¥1,200대 · 초4 아들은 어린이 반값 (일본은 중학생부터 어른 요금이라 중2 딸들은 어른 요금). 10명+캐리어는 열차 끝 칸이 한산해요. (대안: 점보택시 2대 사전예약 → 숙소 직행)", team: "all" },
-      { time: "18:40", icon: "🚕", title: "택시 3대로 숙소 체크인", text: "삿포로역 남쪽 택시승강장 → 숙소 약 10~15분 (대당 ¥1,500 안팎). 4·3·3명으로 나눠 타기.", place: "airbnb", team: "all" },
-      { time: "19:30", icon: "🍜", title: "저녁: 에비소바 이치겐", text: "숙소에서 걸어서 8분. 언 몸을 녹이는 새우 라멘 한 그릇으로 여행 시작!", place: "ichigen", team: "all" },
-      { time: "21:00", icon: "🐧", title: "돈키호테 1차 — 탐색전", text: "다누키코지까지 걸어서 산책 겸 이동. 오늘은 ‘어디에 뭐가 있나’ 파악하고 급한 것만 사기. 어른들은 아이젠·핫팩·아침거리 구매.", place: "donki", team: "all" },
+      { time: "17:45", icon: "🚆", title: "JR 쾌속 에어포트 → 삿포로역", text: "약 37분, 편도 어른 약 ¥1,230 · 초4 아들은 어린이 반값 (일본은 중학생부터 어른 요금이라 중2 딸들은 어른 요금). 17:45~18:05 사이 편을 타면 되고(에어포트 약 12분 간격), 10명+캐리어는 열차 끝 칸이 한산해요. (예비안: 공항버스 → 삿포로 프린스호텔 하차 후 도보 약 5분. 금요일 퇴근 정체·눈이면 90~120분 걸릴 수 있어요. 10명이 한 대에 못 탈 수 있음(예약 불가, 만석 시 다음 편).)", team: "all" },
+      { time: "18:45", icon: "🚕", title: "택시 3대 → 숙소 도착·셀프 체크인", text: "금요일 퇴근시간대라 승강장 대기 10~20분 + 승차 15~25분 정도 걸려요. 대당 ¥1,500~2,000. GO 앱으로 미리 호출하거나 4·3·3명으로 나눠 타기. 숙소 도착은 19:10~19:30 예상, 호스트가 알려준 셀프 체크인 방법으로 입실.", place: "airbnb", team: "all" },
+      { time: "19:45", icon: "🍜", title: "저녁: 에비소바 이치겐", text: "숙소에서 걸어서 약 6~8분. 카운터 16석뿐이라 2~3팀으로 나눠 입장하고 대기를 각오하세요. 줄이 너무 길면 세이코마트 도시락으로 바꿔도 좋아요. 언 몸을 녹이는 새우 라멘 한 그릇으로 여행 시작!", place: "ichigen", team: "all" },
+      { time: "21:15", icon: "🐧", title: "돈키호테 1차 — 탐색전", text: "다누키코지까지 걸어서 산책 겸 이동. 오늘은 ‘어디에 뭐가 있나’ 파악하고 급한 것만 사기. 어른들은 아이젠·핫팩·아침거리 구매. 저녁이 늦어지면 1차는 짧게 하거나 생략해도 돼요 (본게임은 3일차 2차).", place: "donki", team: "all" },
       { time: "22:30", icon: "🌙", title: "숙소 복귀 · 휴식", text: "내일은 오전부터 걸어요. 일찍 자기!", team: "all" },
     ],
     mission: ["🧤 공항 밖 첫 눈 밟고 단체 셀카", "🍜 라멘 국물 끝까지 원샷한 사람 찾기", "🐧 돈키 펭귄(돈펜) 캐릭터와 사진"],
@@ -516,7 +520,7 @@ const PHRASES = [
    사진 출처 (Wikimedia Commons)
    --------------------------------------------------------- */
 function creditList() {
-  const seen = new Set([TRIP.heroFile]);
+  const seen = new Set(TRIP.heroes.map(h => h.file));
   Object.values(PLACES).forEach(p => p.credit && seen.add(p.credit));
   return [...seen];
 }

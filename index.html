@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <canvas id="snow" aria-hidden="true"></canvas>
@@ -73,7 +73,7 @@
       <button data-fly="all">🗾 전체</button>
     </div>
     <div class="stay-note">
-      <b>🏠 숙소 위치는 ‘미나미4조 니시11초메’ 기준 대략적 위치</b>예요. 정확한 주소를 받으면 <code>data.js</code>의 <code>airbnb</code> 좌표만 바꾸면 됩니다.
+      <b>🏠 숙소: Snow Light Hotel Sapporo (에어비앤비) · 南4条西11丁目1291-13</b> 주소 기준이에요. 지도의 핀은 대략적인 위치일 수 있고, 삿포로 프린스호텔(공항버스 하차 지점)에서 도보 약 5분 거리예요.
     </div>
   </section>
 
@@ -173,6 +173,7 @@
         <li>10명은 택시 <b>3대</b>(4·3·3). 앱은 <b>GO</b> 또는 <b>DiDi</b> — 호출 전 가족 단톡에 ‘1호차/2호차/3호차’ 정하기.</li>
         <li>택시 문은 자동! 직접 열고 닫지 마세요.</li>
         <li>숙소 → 스스키노 도보 12~15분 / 지하철 도자이선 니시11초메역 도보 약 8분.</li>
+        <li><b>도착일(1/8 금)</b>: 공항 → 숙소는 JR 쾌속 에어포트(약 37분) + 택시 3대를 기본으로 해요. 예비안인 공항버스는 삿포로 프린스호텔에서 내리면 도보 약 5분이지만, 금요일 퇴근 정체·눈이면 90~120분 걸릴 수 있어요. 10명이 한 대에 못 탈 수 있음(예약 불가, 만석 시 다음 편).</li>
       </ul>
     </details>
 
@@ -246,7 +247,7 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
-<script src="data.js" defer></script>
-<script src="app.js" defer></script>
+<script src="data.js?v=3" defer></script>
+<script src="app.js?v=3" defer></script>
 </body>
 </html>

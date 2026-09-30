@@ -63,6 +63,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   position: absolute; inset: 0; background-size: cover; background-position: center 60%;
   transform: scale(1.08); animation: slowzoom 24s ease-in-out infinite alternate;
 }
+.hero-slide {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1.8s ease;
+}
+.hero-slide.on { opacity: 1; }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
   background:

@@ -98,7 +98,7 @@
             <i class="ov-dot" style="background:${d.hue};color:${d.hue}"></i>
           </button>`).join("")}
       </div>
-      <p class="ov-note">🏠 1~3박: 삿포로 에어비앤비 (미나미4조 니시11초메)<br>♨️ 4박: 조잔케이 하나모미지<br>🐧 돈키호테 2번 · 🎮 아들 전용 데이 · 🌃 야경 · ♨️ 온천까지!</p>`;
+      <p class="ov-note">🏠 1~3박: Snow Light Hotel Sapporo (에어비앤비 · 미나미4조 니시11초메)<br>♨️ 4박: 조잔케이 하나모미지<br>🐧 돈키호테 2번 · 🎮 아들 전용 데이 · 🌃 야경 · ♨️ 온천까지!</p>`;
     $$(".ov-item").forEach(b => b.onclick = () => { selectDay(+b.dataset.go); $("#daybarWrap").scrollIntoView({ behavior: "smooth" }); });
   }
 
@@ -469,7 +469,21 @@
   };
 
   /* ---------- 시작 ---------- */
-  $("#heroBg").style.backgroundImage = `url("${TRIP.hero}")`;
+  (() => {
+    const box = $("#heroBg"), list = TRIP.heroes;
+    const slides = list.map(h => {
+      const d = document.createElement("div");
+      d.className = "hero-slide"; d.style.backgroundImage = `url("${h.src}")`; d.style.backgroundPosition = h.pos || "center";
+      box.appendChild(d); return d;
+    });
+    let i = Math.floor(Math.random() * slides.length);
+    slides[i].classList.add("on");
+    if (slides.length < 2 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setInterval(() => {
+      if (document.hidden) return;
+      slides[i].classList.remove("on"); i = (i + 1) % slides.length; slides[i].classList.add("on");
+    }, 8000);
+  })();
   snow(); countdown(); overview(); daybar();
   const ti = todayIndex();
   selectDay(ti >= 0 ? ti : store.get("day", 0));
