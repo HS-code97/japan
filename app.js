@@ -10,12 +10,15 @@
   const gmap = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
   const TYPE_LABEL = { spot: "SIGHT · 관광", food: "EAT · 식사", shop: "SHOP · 쇼핑", stay: "STAY · 숙소" };
 
+  // 일정 카드의 선택지: options가 있으면 1·2번 식당, 없으면 카드 자체가 하나의 선택지
+  const optsOf = it => it.options || [{ title: it.title, text: it.text, place: it.place }];
+
   // 장소가 등장하는 날짜 매핑
   const placeDays = {};
-  DAYS.forEach((d, i) => d.items.forEach(it => {
-    if (!it.place) return;
-    (placeDays[it.place] ||= new Set()).add(i);
-  }));
+  DAYS.forEach((d, i) => d.items.forEach(it => optsOf(it).forEach(o => {
+    if (!o.place) return;
+    (placeDays[o.place] ||= new Set()).add(i);
+  })));
 
   /* ---------- 눈 내리는 캔버스 ---------- */
   function snow() {
@@ -126,6 +129,64 @@
     let idx = -1; items.forEach((it, k) => { if (it.time <= hm) idx = k; });
     return idx;
   }
+  // 카드별 선택된 식당 번호 (날짜 탭을 오가도 유지, 새로고침하면 1번으로)
+  const optSel = {};
+  function optBodyHTML(o) {
+    const p = o.place && PLACES[o.place];
+    return `
+      <h4>${esc(o.title)}</h4>
+      <p>${esc(o.text)}</p>
+      ${p ? `
+        <button class="tl-place" data-open="${o.place}">
+          <div class="tl-thumb" data-img="${o.place}"></div>
+          <div class="tl-place-main"><b>${esc(p.name)}</b><span>${esc(p.area || "")}</span>${p.menu ? `<br><em>${p.menu.adult ? "👨‍👩‍👧 우리 가족 맞춤 메뉴 보기" : "📝 주문 팁 보기"}</em>` : ""}</div>
+          <span class="tl-arrow">›</span>
+        </button>` : ""}`;
+  }
+  function bindOptTabs(card, d, items) {
+    const key = card.dataset.key;
+    const it = items.find(x => d.id + ":" + x.k === key);
+    const opts = it.options;
+    const tabs = $$(".opt-tab", card), wrap = $(".opt-wrap", card), body = $(".opt-body", card);
+    const bindBody = () => {
+      lazy(body);
+      $$("[data-open]", body).forEach(b => b.onclick = () => openSheet(b.dataset.open));
+    };
+    let timer;
+    function select(n, focus) {
+      if (n === (optSel[key] || 0)) { if (focus) tabs[n].focus(); return; }
+      optSel[key] = n;
+      tabs.forEach((t, i) => {
+        t.classList.toggle("active", i === n);
+        t.setAttribute("aria-selected", i === n);
+        t.tabIndex = i === n ? 0 : -1;
+      });
+      body.setAttribute("aria-labelledby", tabs[n].id);
+      if (focus) tabs[n].focus();
+      // 가벼운 페이드 + 높이 보간
+      clearTimeout(timer);
+      wrap.style.height = wrap.offsetHeight + "px";
+      body.classList.add("fade");
+      timer = setTimeout(() => {
+        body.innerHTML = optBodyHTML(opts[n]);
+        bindBody();
+        wrap.style.height = body.offsetHeight + "px";
+        body.classList.remove("fade");
+        timer = setTimeout(() => { wrap.style.height = ""; }, 280);
+      }, 130);
+    }
+    tabs.forEach((t, i) => {
+      t.onclick = () => select(i);
+      t.onkeydown = e => {
+        const last = tabs.length - 1;
+        const to = e.key === "ArrowRight" ? (i + 1) % tabs.length : e.key === "ArrowLeft" ? (i - 1 + tabs.length) % tabs.length
+          : e.key === "Home" ? 0 : e.key === "End" ? last : -1;
+        if (to < 0) return;
+        e.preventDefault(); select(to, true);
+      };
+    });
+  }
+
   function renderDay() {
     const d = DAYS[curDay];
     let items = d.items.map((it, k) => ({ ...it, k }));
@@ -155,20 +216,24 @@
         <p class="team-note">${team === "girls" ? "🎀 소녀팀: 중2 딸 3명 + 어른 5명 → 오타루" : team === "boy" ? "🎮 소년팀: 초4 아들 + 어른 1명 → 점프대·포켓몬·게임" : "오전~오후는 두 팀으로 나뉘고, 17시 이후 삿포로역에서 합류해요."}</p>` : ""}
       <div class="timeline">
         ${items.map((it, k) => {
-          const p = it.place && PLACES[it.place];
+          const opts = optsOf(it), multi = !!it.options;
+          const key = d.id + ":" + it.k;
+          const sel = multi ? Math.min(optSel[key] || 0, opts.length - 1) : 0;
+          const badge = it.team === "girls" ? '<span class="tl-badge girls">🎀 소녀팀</span>' : it.team === "boy" ? '<span class="tl-badge boy">🎮 소년팀</span>' : "";
           return `
           <div class="tl-item">
             <div class="tl-time"><b>${it.time}</b><div class="tl-icon">${it.icon}</div></div>
-            <div class="tl-card${k === nowIdx ? " now" : ""}">
-              ${it.team === "girls" ? '<span class="tl-badge girls">🎀 소녀팀</span>' : it.team === "boy" ? '<span class="tl-badge boy">🎮 소년팀</span>' : ""}
-              <h4>${esc(it.title)}</h4>
-              <p>${esc(it.text)}</p>
-              ${p ? `
-                <button class="tl-place" data-open="${it.place}">
-                  <div class="tl-thumb" data-img="${it.place}"></div>
-                  <div class="tl-place-main"><b>${esc(p.name)}</b><span>${esc(p.area || "")}</span>${p.menu ? "<br><em>👨‍👩‍👧 우리 가족 맞춤 메뉴 보기</em>" : ""}</div>
-                  <span class="tl-arrow">›</span>
-                </button>` : ""}
+            <div class="tl-card${k === nowIdx ? " now" : ""}" ${multi ? `data-key="${key}"` : ""}>
+              ${multi ? `<div class="opt-row">
+                <div class="opt-tabs" role="tablist" aria-label="식당 선택">
+                  ${opts.map((o, n) => {
+                    const nm = PLACES[o.place]?.name || o.title;
+                    return `<button type="button" class="opt-tab${n === sel ? " active" : ""}" role="tab" id="ot-${key.replace(":", "-")}-${n}" aria-controls="op-${key.replace(":", "-")}" aria-selected="${n === sel}" tabindex="${n === sel ? 0 : -1}" data-n="${n}" title="${esc(nm)}" aria-label="${n + 1}번 ${esc(nm)}">${n + 1}</button>`;
+                  }).join("")}
+                </div>${badge}</div>` : badge}
+              <div class="opt-wrap">
+                <div class="opt-body"${multi ? ` role="tabpanel" id="op-${key.replace(":", "-")}" aria-labelledby="ot-${key.replace(":", "-")}-${sel}"` : ""}>${optBodyHTML(opts[sel])}</div>
+              </div>
             </div>
           </div>`;
         }).join("")}
@@ -184,6 +249,7 @@
       </div>`;
     lazy($("#dayPanel"));
     $$("[data-open]", $("#dayPanel")).forEach(b => b.onclick = () => openSheet(b.dataset.open));
+    $$(".tl-card[data-key]", $("#dayPanel")).forEach(card => bindOptTabs(card, d, items));
     $$(".mission input").forEach(cb => cb.onchange = () => {
       const done = $$(".mission input").filter(x => x.checked).map(x => +x.dataset.m);
       store.set("mission:" + d.id, done);
@@ -217,7 +283,7 @@
           ${p.price ? `<span>💴 ${esc(p.price)}</span>` : ""}
         </div>
         <p>${esc(p.desc)}</p>
-        ${p.menu ? `<h4>🍽️ 우리 가족 맞춤 메뉴</h4>${menuHTML(p)}` : ""}
+        ${p.menu ? `<h4>${p.menu.adult ? "🍽️ 우리 가족 맞춤 메뉴" : "🍽️ 주문 팁"}</h4>${menuHTML(p)}` : ""}
         ${p.tips?.length ? `<h4>💡 알아두면 좋은 팁</h4><ul class="sh-tips">${p.tips.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
         <div class="sh-actions">
           <a class="btn dark" href="${gmap(p.q || p.jp)}" target="_blank" rel="noopener">🗺️ 구글맵 길찾기</a>
@@ -262,6 +328,7 @@
   })();
 
   function menuHTML(p) {
+    if (!p.menu.adult) return `<div class="menu-col a"><h5>📝 주문 팁</h5><ul>${p.menu.order.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>`;
     return `<div class="menu-grid">
       <div class="menu-col a"><h5>👨‍👩 어른 6명</h5><ul>${p.menu.adult.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>
       <div class="menu-col t"><h5>🎒 아이 4명 (중2·초4)</h5><ul>${p.menu.teen.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>
@@ -273,7 +340,7 @@
     ["all", "전체"], ["meal", "🍽️ 식사"], ["sweet", "🍰 디저트·간식"],
     ["d0", "DAY 1"], ["d1", "DAY 2"], ["d2", "DAY 3"], ["d3", "DAY 4"], ["d4", "DAY 5"],
   ];
-  const SWEET = new Set(["kinotoya", "letao", "parfait", "airportSweets", "shiroi", "seico"]);
+  const SWEET = new Set(["kinotoya", "letao", "parfait", "airportSweets", "shiroi", "seico", "umier", "kitaichiHall"]);
   let foodFilter = "all";
   function foodView() {
     $("#foodFilters").innerHTML = FOOD_FILTERS.map(([k, l]) => `<button class="chip" data-f="${k}">${l}</button>`).join("");

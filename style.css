@@ -182,6 +182,21 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border: 1px solid var(--line); background: #f3f7fc; border-radius: 14px; padding: 7px; color: var(--ink);
 }
 .tl-place:active { background: #e8f0fa; }
+
+/* 식당 1·2 번호 탭 */
+.opt-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.opt-row .tl-badge { margin-bottom: 0; }
+.opt-tabs { display: inline-flex; gap: 6px; }
+.opt-tab {
+  min-width: 36px; min-height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line);
+  background: #eef3f9; color: var(--ink3); font-size: 13.5px; font-weight: 700; font-variant-numeric: tabular-nums;
+  transition: background .18s, color .18s, border-color .18s;
+}
+.opt-tab.active { background: var(--adult); border-color: var(--adult); color: #fff; }
+.opt-tab:focus-visible { outline: 2px solid var(--lamp); outline-offset: 2px; }
+.opt-wrap { overflow: hidden; transition: height .25s ease; }
+.opt-body { display: flow-root; transition: opacity .13s ease; }
+.opt-body.fade { opacity: 0; }
 .tl-thumb { width: 58px; height: 58px; flex: 0 0 58px; border-radius: 10px; background: #dde8f4 center/cover no-repeat; display: grid; place-items: center; font-size: 22px; }
 .tl-place-main { flex: 1; min-width: 0; }
 .tl-place-main b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -390,4 +405,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   .hero-bg, .hero-scroll { animation: none; }
   .view { animation: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-wrap, .opt-body, .opt-tab { transition: none; }
 }
