@@ -273,6 +273,7 @@
     const days = [...(placeDays[id] || [])].map(i => DAYS[i].label);
     $("#sheetBody").innerHTML = `
       <div class="sh-img" id="shImg">${p.imgNote ? `<span class="note">${esc(p.imgNote)}</span>` : ""}</div>
+      ${p.photoCredit ? `<p class="photo-credit">${esc(p.photoCredit)}</p>` : ""}
       <div class="sh-content">
         <div class="sh-type">${TYPE_LABEL[p.type]}</div>
         <h2>${esc(p.name)}</h2>
@@ -365,6 +366,7 @@
           ${p.price ? `<span class="price">${esc(p.price)}</span>` : ""}
           ${p.imgNote ? `<span class="note">${esc(p.imgNote)}</span>` : ""}
         </div>
+        ${p.photoCredit ? `<p class="photo-credit">${esc(p.photoCredit)}</p>` : ""}
         <div class="fc-body">
           <h3>${p.emoji} ${esc(p.name)}</h3>
           <div class="fc-jp">${esc(p.jp)} · ${esc(p.area || "")}</div>
@@ -510,8 +512,8 @@
     fromJ();
 
     // 사진 출처
-    $("#credits").innerHTML = creditList().map(f =>
-      `<li><a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(f.replace(/ /g, "_"))}" target="_blank" rel="noopener">${esc(f)}</a></li>`).join("");
+    $("#credits").innerHTML = creditList().map(([f, line]) =>
+      `<li><a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(f.replace(/ /g, "_"))}" target="_blank" rel="noopener">${esc(f)}</a>${line ? `<br><span class="photo-credit-line">${esc(line)}</span>` : ""}</li>`).join("");
   }
 
   /* ---------- 탭 전환 ---------- */

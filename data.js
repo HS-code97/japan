@@ -294,8 +294,8 @@ const PLACES = {
   },
   parfait: {
     type: "food", emoji: "🍨", name: "파르페테리아 PaL (시메 파르페)", jp: "パフェテリア PaL(パル)",
-    img: W + "7/73/Parfait_samples_by_pinguino_in_Osaka%2C_Japan.jpg/960px-Parfait_samples_by_pinguino_in_Osaka%2C_Japan.jpg", credit: "Parfait_samples_by_pinguino_in_Osaka,_Japan.jpg",
-    imgNote: "사진은 파르페 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/SAKURAKO_-_Parfait._%2848735970281%29.jpg/960px-SAKURAKO_-_Parfait._%2848735970281%29.jpg", credit: "SAKURAKO_-_Parfait._(48735970281).jpg",
+    photoCredit: "대표 이미지(예시) · 사진: MIKI Yoshihito from Sapporo City, Hokkaido, JAPAN · CC BY 2.0 · Wikimedia Commons",
     lat: 43.0562847, lng: 141.3559446, area: "스스키노 · 남4서2 빌딩 6층",
     desc: "저녁 먹고 ‘마무리(시메)’로 예술작품 같은 파르페를 먹는 삿포로만의 문화. 남4서2 빌딩 6층, 스스키노역 도보 3분(호스이스스키노역 도보 1분). 일요일은 18:00~24:00(금·토는 새벽 2시까지) 영업, 연중무휴, 81석이에요.",
     tips: ["아이는 23시까지 입장할 수 있어요", "일반 예약은 불가하지만 개인실 대관(최대 16명, 90분, ¥15,000 — 10명이면 1인당 약 ¥1,500)이 가능하니 사전에 문의하세요", "줄이 길면 5명씩 2팀으로 나눠 입장하세요"],
@@ -367,8 +367,8 @@ const PLACES = {
      menu.order = 확실한 메뉴 정보가 없을 때 쓰는 ‘주문 팁’ */
   lamai: {
     type: "food", emoji: "🍛", name: "스프카레 라마이", jp: "スープカレー ラマイ",
-    img: W + "4/42/%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC_Soup_Curry.jpg/960px-%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC_Soup_Curry.jpg", credit: "スープカレー_Soup_Curry.jpg",
-    imgNote: "사진은 스프카레 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/A_soup_curry_dish_in_Sapporo_-_Flickr_-_odako1.jpg/960px-A_soup_curry_dish_in_Sapporo_-_Flickr_-_odako1.jpg", credit: "A_soup_curry_dish_in_Sapporo_-_Flickr_-_odako1.jpg",
+    photoCredit: "대표 이미지(예시) · 사진: Koichi Oda · CC BY-SA 2.0 · Wikimedia Commons",
     lat: 43.054725, lng: 141.3434414,
     area: "숙소에서 한 블록 (남4서10)",
     desc: "숙소에서 한 블록 거리(남4서10)라 도보 이동이 짧아 피곤한 첫날 밤에 좋아요. 11:30~23:00 영업, 카드 결제 가능.",
@@ -377,9 +377,9 @@ const PLACES = {
     menu: { order: ["메뉴는 현지 메뉴판에서 고르고, 맵기 단계는 아이들은 낮게 주문하세요"] },
   },
   daiso: {
-    type: "food", emoji: "🦀", name: "니조시장 다이소 (大磯)", jp: "二条市場 大磯",
-    img: W + "f/fc/Nijo_fish_Market_2014.jpg/960px-Nijo_fish_Market_2014.jpg", credit: "Nijo_fish_Market_2014.jpg",
-    imgNote: "사진은 니조 시장 (참고 이미지)",
+    type: "food", emoji: "🍚", name: "니조시장 다이소 (大磯)", jp: "二条市場 大磯",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B42.JPG/960px-%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B42.JPG", credit: "二条市場2.JPG",
+    photoCredit: "사진: K. Takeda · CC BY-SA 3.0 · Wikimedia Commons (니조시장 내부 모습)",
     lat: 43.0585776, lng: 141.3589332,
     area: "니조 시장 안",
     desc: "니조 시장 안에 있는 43석 식당. 단체 OK, 수요일 휴무라 토요일은 영업해요. 시장 안이라 따로 이동할 필요가 없어요.",
@@ -389,8 +389,8 @@ const PLACES = {
   },
   umier: {
     type: "food", emoji: "🍦", name: "우미에르 세컨드", jp: "ウミエールセカンド",
-    img: W + "6/6a/Soft_Ice_cream.jpg/960px-Soft_Ice_cream.jpg", credit: "Soft_Ice_cream.jpg",
-    imgNote: "사진은 소프트아이스크림 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/%E7%99%BD%E4%BA%95%E8%BE%B2%E5%9C%92_%E3%80%8C%E8%9B%8D%E3%81%AE%E3%82%BD%E3%83%95%E3%83%88%E3%83%9F%E3%83%AB%E3%82%AF%E3%80%8D_%28941527512%29.jpg/960px-%E7%99%BD%E4%BA%95%E8%BE%B2%E5%9C%92_%E3%80%8C%E8%9B%8D%E3%81%AE%E3%82%BD%E3%83%95%E3%83%88%E3%83%9F%E3%83%AB%E3%82%AF%E3%80%8D_%28941527512%29.jpg", credit: "白井農園_「蛍のソフトミルク」_(941527512).jpg",
+    photoCredit: "대표 이미지(예시) · 사진: yoppy · CC BY 2.0 · Wikimedia Commons",
     lat: 43.0575288, lng: 141.3515516,
     area: "다누키코지 상점가",
     desc: "홋카이도 유기농 우유 100% 소프트아이스크림. 실내라 추위 걱정이 없고, 다음 점심 장소(다누키코지)로 가는 길목이에요.",
@@ -400,8 +400,8 @@ const PLACES = {
   },
   treasure: {
     type: "food", emoji: "🍛", name: "스프카레 트레져", jp: "スープカレー トレジャー",
-    img: W + "4/42/%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC_Soup_Curry.jpg/960px-%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC_Soup_Curry.jpg", credit: "スープカレー_Soup_Curry.jpg",
-    imgNote: "사진은 스프카레 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Chicken_vegetable_soup_curry_%282813142985%29.jpg/960px-Chicken_vegetable_soup_curry_%282813142985%29.jpg", credit: "Chicken_vegetable_soup_curry_(2813142985).jpg",
+    photoCredit: "대표 이미지(예시) · 사진: pelican from Tokyo, Japan · CC BY-SA 2.0 · Wikimedia Commons",
     lat: 43.0582237, lng: 141.3568988,
     area: "오도리역 도보 3분",
     desc: "가라쿠의 자매점. 오도리역에서 도보 3분이고 대기가 적은 편이에요. 맵기 1~40단계라 초등학생도 먹을 수 있어요.",
@@ -411,6 +411,8 @@ const PLACES = {
   },
   kaniShogun: {
     type: "food", emoji: "🦀", name: "카니쇼군 삿포로 본점", jp: "かに将軍 札幌本店",
+    img: U + "b/ba/Susukino_at_night.jpg", credit: "Susukino_at_night.jpg",
+    photoCredit: "사진: hwoarang17 · 퍼블릭 도메인 · Wikimedia Commons (가게 주변 스스키노 전경)",
     lat: 43.0562255, lng: 141.3551605,
     area: "스스키노역 도보 2분",
     desc: "스스키노역에서 도보 2분, 개별룸이 있는 게 요리점. 모이와산에서 택시로 이동한 뒤 동선이 짧아요.",
@@ -421,6 +423,8 @@ const PLACES = {
   },
   sankaku: {
     type: "food", emoji: "🐟", name: "오타루 산카쿠 시장", jp: "小樽 三角市場",
+    img: "https://commons.wikimedia.org/wiki/Special:FilePath/%E4%B8%89%E8%A7%92%E5%B8%82%E5%A0%B4%2C_%E5%B0%8F%E6%A8%BD%2C_%E5%8C%97%E6%B5%B7%E9%81%93%2C_%E6%97%A5%E6%9C%AC%2C_Otaru%2C_Hokkaido%2C_Japan%2C_%E3%81%8A%E3%81%9F%E3%82%8B%E3%81%97%2C_%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%2C_%E3%81%AB%E3%81%A3%E3%81%BD%E3%82%93%2C_%E3%81%AB%E3%81%BB%E3%82%93_%2832871715387%29.jpg?width=960", credit: "三角市場,_小樽,_北海道,_日本,_Otaru,_Hokkaido,_Japan,_おたるし,_ほっかいどう,_にっぽん,_にほん_(32871715387).jpg",
+    photoCredit: "사진: bryan... · CC BY-SA 2.0 · Wikimedia Commons",
     lat: 43.1990356, lng: 140.993927,
     area: "오타루역 도보 1분",
     desc: "오타루역에서 도보 1분. 06:00~17:00 연중무휴이고, 노점 6곳이라 8명이 나눠 먹기 좋아요.",
@@ -430,8 +434,8 @@ const PLACES = {
   },
   toriton: {
     type: "food", emoji: "🍣", name: "회전초밥 토리톤 기타8조 광성점", jp: "回転寿司 トリトン 北8条光星店",
-    img: W + "4/49/Sushi_conyeyor_chain_1.jpg/960px-Sushi_conyeyor_chain_1.jpg", credit: "Sushi_conyeyor_chain_1.jpg",
-    imgNote: "사진은 회전초밥 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/TORITON_-_Teine_01.jpg/960px-TORITON_-_Teine_01.jpg", credit: "TORITON_-_Teine_01.jpg",
+    photoCredit: "사진: ノボホショコロトソ · CC BY 4.0 · Wikimedia Commons (테이네점)",
     lat: 43.0727363, lng: 141.3614178,
     area: "삿포로역에서 택시",
     desc: "11:00~22:00 영업하는 회전초밥집. 예약은 불가하지만 2명이라 대기가 짧아요.",
@@ -440,7 +444,9 @@ const PLACES = {
     menu: { order: ["예약 불가 — 도착 후 바로 접수하세요"] },
   },
   kitaichiHall: {
-    type: "food", emoji: "🏮", name: "기타이치 홀", jp: "北一ホール",
+    type: "food", emoji: "☕", name: "기타이치 홀", jp: "北一ホール",
+    img: "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%85%AB%E6%AE%B5%E5%86%B0%E6%B7%87%E6%B7%8B%2C_8%E6%AE%B5%E5%86%B0%E6%B7%87%E6%B7%8B%2C_%E5%8C%97%E4%B8%80%E7%A1%9D%E5%AD%90%E4%B8%89%E8%99%9F%E9%A4%A8%2C_%E5%B0%8F%E6%A8%BD%2C_%E5%8C%97%E6%B5%B7%E9%81%93%2C_%E6%97%A5%E6%9C%AC%2C_Kitaichi_glass%2C_Otaru%2C_Hokkaido%2C_Japan%2C_%E5%8C%97%E4%B8%80%E7%A1%9D%E5%AD%90%E4%B8%89%E5%8F%B7%E9%A4%A8%E3%83%86%E3%83%A9%E3%82%B9%2C_%E3%81%8A%E3%81%9F%E3%82%8B%E3%81%97%2C_%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%2C_%E3%81%AB%E3%81%A3%E3%81%BD%E3%82%93%2C_%E3%81%AB%E3%81%BB%E3%82%93_%2833938300028%29.jpg?width=960", credit: "八段冰淇淋,_8段冰淇淋,_北一硝子三號館,_小樽,_北海道,_日本,_Kitaichi_glass,_Otaru,_Hokkaido,_Japan,_北一硝子三号館テラス,_おたるし,_ほっかいどう,_にっぽん,_にほん_(33938300028).jpg",
+    photoCredit: "사진: bryan... · CC BY-SA 2.0 · Wikimedia Commons (같은 건물 북일유리 3호관의 소프트아이스크림)",
     lat: 43.1922675, lng: 141.007334,
     area: "오타루 사카이마치 7-26",
     desc: "램프 조명이 있는 167석 카페. 09:30~17:00 주문 가능, 파르페·케이크·밀크티. 12/29~1/7만 휴무라 1/10은 영업해요.",
@@ -450,8 +456,8 @@ const PLACES = {
   },
   yukidaruma: {
     type: "food", emoji: "🐑", name: "삿포로 성길사한 유키다루마 본점", jp: "札幌成吉思汗 雪だるま 本店",
-    img: U + "b/bc/Jingisukan_japanese_mutton_barbecue.jpg", credit: "Jingisukan_japanese_mutton_barbecue.jpg",
-    imgNote: "사진은 징기스칸 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Tsukisappu_genghis_khan_club_genghis_khan.JPG/960px-Tsukisappu_genghis_khan_club_genghis_khan.JPG", credit: "Tsukisappu_genghis_khan_club_genghis_khan.JPG",
+    photoCredit: "대표 이미지(예시) · 사진: Gpx-evo · CC BY-SA 3.0 · Wikimedia Commons",
     lat: 43.0525757, lng: 141.3526751,
     area: "스스키노",
     desc: "스스키노의 징기스칸 전문점. 6~20명 개인실이 있고 아이 동반 OK예요. 이후 스스키노 파르페·돈키호테 동선과 가까워요.",
@@ -462,6 +468,8 @@ const PLACES = {
   },
   kaihe: {
     type: "food", emoji: "🍱", name: "카이헤(海へ) 삿포로역 지하상가 아피아점", jp: "海へ 札幌駅地下街アピア店",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shashimi_teishoku.jpg/960px-Shashimi_teishoku.jpg", credit: "Shashimi_teishoku.jpg",
+    photoCredit: "대표 이미지(예시) · 사진: Mkill(추정) · CC BY 2.5 · Wikimedia Commons",
     lat: 43.067012, lng: 141.3499595,
     area: "삿포로역 직결 (아피아)",
     desc: "삿포로역 직결 해산물 이자카야. 완전 개인실이 있고 24시간 인터넷 예약이 가능해요.",
@@ -474,8 +482,8 @@ const PLACES = {
   },
   ramenRepublic: {
     type: "food", emoji: "🍜", name: "삿포로 라멘공화국", jp: "札幌ら～めん共和国",
-    img: W + "2/25/Sapporo_miso_ramen.jpg/960px-Sapporo_miso_ramen.jpg", credit: "Sapporo_miso_ramen.jpg",
-    imgNote: "사진은 삿포로 미소라멘 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Sapporo_ramen_Kyowakoku2.jpg/960px-Sapporo_ramen_Kyowakoku2.jpg", credit: "Sapporo_ramen_Kyowakoku2.jpg",
+    photoCredit: "사진: 毒島みるく · CC0 · Wikimedia Commons (실제 장소 내부)",
     lat: 43.0674442, lng: 141.3530158,
     area: "삿포로역 JR타워 10층",
     desc: "JR타워 10층의 라멘 거리. 가게 8곳이 모여 있어 취향대로 나눠 먹기 좋아요.",
@@ -485,8 +493,8 @@ const PLACES = {
   },
   shirakaba: {
     type: "food", emoji: "🍜", name: "시라카바산소 신치토세 공항점", jp: "白樺山荘 新千歳空港店",
-    img: W + "2/25/Sapporo_miso_ramen.jpg/960px-Sapporo_miso_ramen.jpg", credit: "Sapporo_miso_ramen.jpg",
-    imgNote: "사진은 삿포로 미소라멘 (참고 이미지)",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Shirakaba-sanso_Miso-ramen.jpg/960px-Shirakaba-sanso_Miso-ramen.jpg", credit: "Shirakaba-sanso_Miso-ramen.jpg",
+    photoCredit: "사진: 毒島みるく · CC0 · Wikimedia Commons (실제 가게의 미소라멘)",
     lat: 42.7880715, lng: 141.6801799,
     area: "신치토세 국내선 · 라멘 도장 안",
     desc: "삿포로 미소 라멘 대표 가게로 알려져 있어요 (라멘 도장 안 가게).",
@@ -688,7 +696,7 @@ const PHRASES = [
    사진 출처 (Wikimedia Commons)
    --------------------------------------------------------- */
 function creditList() {
-  const seen = new Set(TRIP.heroes.map(h => h.file));
-  Object.values(PLACES).forEach(p => p.credit && seen.add(p.credit));
+  const seen = new Map(TRIP.heroes.map(h => [h.file, ""]));
+  Object.values(PLACES).forEach(p => p.credit && seen.set(p.credit, p.photoCredit || ""));
   return [...seen];
 }
