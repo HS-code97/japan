@@ -102,7 +102,7 @@
           </button>`).join("")}
       </div>
       <p class="ov-note">🏠 1~3박: Snow Light Hotel Sapporo (에어비앤비 · 미나미4조 니시11초메)<br>♨️ 4박: 조잔케이 하나모미지<br>🐧 돈키호테 2번 · 🎮 아들 전용 데이 · 🌃 야경 · ♨️ 온천까지!</p>`;
-    $$(".ov-item").forEach(b => b.onclick = () => { selectDay(+b.dataset.go); $("#daybarWrap").scrollIntoView({ behavior: "smooth" }); });
+    $$(".ov-item").forEach(b => b.onclick = () => goDay(+b.dataset.go));
   }
 
   /* ---------- 일정 ---------- */
@@ -123,6 +123,15 @@
     store.set("day", i);
     renderDay();
   }
+  // 선택한 날의 첫 카드(날짜 헤더)가 고정된 날짜 막대 바로 아래에 오도록 스크롤
+  function scrollToDayTop() {
+    const head = $("#dayPanel .day-head"), bar = $("#daybarWrap");
+    if (!head) return;
+    const gap = 8;
+    const y = head.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - gap;
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  }
+  function goDay(i) { selectDay(i); scrollToDayTop(); }
   function nowItemIndex(d, items) {
     if (todayIndex() !== DAYS.indexOf(d)) return -1;
     const hm = new Date().toLocaleTimeString("en-GB", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit" });
@@ -261,8 +270,8 @@
         b.onclick = () => { team = b.dataset.team; store.set("team", team); renderDay(); };
       });
     }
-    $("#prevDay").onclick = () => { selectDay(curDay - 1); $("#daybarWrap").scrollIntoView({ behavior: "smooth" }); };
-    $("#nextDay").onclick = () => { selectDay(curDay + 1); $("#daybarWrap").scrollIntoView({ behavior: "smooth" }); };
+    $("#prevDay").onclick = () => goDay(curDay - 1);
+    $("#nextDay").onclick = () => goDay(curDay + 1);
   }
 
   /* ---------- 바텀시트 ---------- */
