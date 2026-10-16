@@ -116,22 +116,39 @@
       </button>`).join("");
     $$(".day-chip").forEach(b => b.onclick = () => selectDay(+b.dataset.i));
   }
+  function scrollDayChipToCenter(chip, smooth = true) {
+    const bar = $("#daybar");
+    if (!chip || !bar) return;
+    const targetLeft = chip.offsetLeft - (bar.clientWidth - chip.clientWidth) / 2;
+    bar.scrollTo({ left: Math.max(0, targetLeft), behavior: smooth ? "smooth" : "auto" });
+  }
   function selectDay(i) {
     curDay = i;
     $$(".day-chip").forEach(b => b.classList.toggle("active", +b.dataset.i === i));
-    $(".day-chip.active")?.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    const activeChip = $(".day-chip.active");
+    if (activeChip) scrollDayChipToCenter(activeChip, true);
     store.set("day", i);
     renderDay();
   }
-  // 선택한 날의 첫 카드(날짜 헤더)가 고정된 날짜 막대 바로 아래에 오도록 스크롤
-  function scrollToDayTop() {
-    const head = $("#dayPanel .day-head"), bar = $("#daybarWrap");
-    if (!head) return;
-    const gap = 8;
-    const y = head.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - gap;
-    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  function getDayScheduleTop() {
+    const bar = $("#daybarWrap");
+    if (!bar) return 0;
+    const ov = $("#overview");
+    if (ov) {
+      return ov.getBoundingClientRect().bottom + window.scrollY;
+    }
+    let top = 0, el = bar;
+    while (el) { top += el.offsetTop; el = el.offsetParent; }
+    return top;
   }
-  function goDay(i) { selectDay(i); scrollToDayTop(); }
+  // 선택한 날의 하루 시작 일정이 고정된 날짜 막대 바로 아래에 오도록 스크롤
+  function scrollToDayTop(smooth = true) {
+    requestAnimationFrame(() => {
+      const targetY = getDayScheduleTop();
+      window.scrollTo({ top: Math.max(0, targetY), behavior: smooth ? "smooth" : "auto" });
+    });
+  }
+  function goDay(i) { selectDay(i); scrollToDayTop(true); }
   function nowItemIndex(d, items) {
     if (todayIndex() !== DAYS.indexOf(d)) return -1;
     const hm = new Date().toLocaleTimeString("en-GB", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit" });
