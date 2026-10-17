@@ -413,7 +413,7 @@
     Object.entries(PLACES).forEach(([id, p]) => {
       if (!p.lat) return;
       const di = [...(placeDays[id] || [])];
-      const color = id === "airbnb" ? "#ff5a5f" : di.length ? DAYS[Math.min(...di)].hue : "#9cc6ec";
+      const color = p.type === "stay" ? "#f5c518" : p.type === "food" ? "#ff8c1a" : "#2f80ed";
       const icon = L.divIcon({
         className: "", iconSize: [34, 34], iconAnchor: [4, 34], popupAnchor: [13, -30],
         html: `<div class="pin${id === "airbnb" ? " home" : ""}" style="background:${color}"><span>${p.emoji}</span></div>`,
