@@ -239,7 +239,7 @@
           <button data-team="girls">🎀 소녀팀</button>
           <button data-team="boy">🎮 소년팀</button>
         </div>
-        <p class="team-note">${team === "girls" ? "🎀 소녀팀: 중2 딸 3명 + 어른 5명 → 오타루" : team === "boy" ? "🎮 소년팀: 초4 아들 + 어른 1명 → 점프대·포켓몬·게임" : "오전~오후는 두 팀으로 나뉘고, 17시 이후 삿포로역에서 합류해요."}</p>` : ""}
+        <p class="team-note">${team === "girls" ? "🎀 소녀팀: 중2 딸 3명 + 어른 5명 → 오전 삿포로역 쇼핑" : team === "boy" ? "🎮 소년팀: 초4 아들 + 어른 1명 → 점프대·포켓몬" : "오전엔 두 팀, 12시 반 삿포로역에서 합류해 다 같이 오타루로 가요."}</p>` : ""}
       <div class="timeline">
         ${items.map((it, k) => {
           const opts = optsOf(it), multi = !!it.options;
