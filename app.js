@@ -312,6 +312,7 @@
         <p>${esc(p.desc)}</p>
         ${p.menu ? `<h4>${p.menu.adult ? "🍽️ 우리 가족 맞춤 메뉴" : "🍽️ 주문 팁"}</h4>${menuHTML(p)}` : ""}
         ${p.tips?.length ? `<h4>💡 알아두면 좋은 팁</h4><ul class="sh-tips">${p.tips.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+        ${p.reservation ? `<div class="sh-rsv-wrap"><button class="btn rsv-btn" type="button" data-rsv="${id}">🎫 예약 확인증 보기 (일본어 · 직원 제시용)</button></div>` : ""}
         <div class="sh-actions">
           <a class="btn dark" href="${gmap(p.q || p.jp)}" target="_blank" rel="noopener">🗺️ 구글맵 길찾기</a>
           <button class="btn light" id="shOnMap">📍 지도에서 보기</button>
@@ -325,6 +326,8 @@
       im.src = p.img;
     } else img.insertAdjacentText("beforeend", p.emoji);
     $("#shOnMap").onclick = () => { closeSheet(); showView("map"); setTimeout(() => focusPlace(id), 350); };
+    const shRsv = $("[data-rsv]", $("#sheetBody"));
+    if (shRsv) shRsv.onclick = () => openReservation(id);
     $("#sheetBody").scrollTop = 0;
     backdrop.hidden = false;
     requestAnimationFrame(() => { backdrop.classList.add("show"); sheet.classList.add("open"); });
@@ -399,6 +402,7 @@
           <p>${esc(p.desc)}</p>
           ${menuHTML(p)}
           <div class="fc-actions">
+            ${p.reservation ? `<button class="btn rsv-btn" type="button" data-rsv="${id}">🎫 예약증(日本語)</button>` : ""}
             <button class="btn light" data-open="${id}">자세히 · 팁</button>
             <a class="btn dark" href="${gmap(p.q || p.jp)}" target="_blank" rel="noopener">🗺️ 길찾기</a>
           </div>
@@ -418,7 +422,52 @@
       if (io) { const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { o.disconnect(); load(); } }, { rootMargin: "300px" }); o.observe(el); } else load();
     });
     $$("#foodList [data-open]").forEach(b => b.onclick = () => openSheet(b.dataset.open));
+    $$("#foodList [data-rsv]").forEach(b => b.onclick = () => openReservation(b.dataset.rsv));
   }
+
+  /* ---------- 일본어 예약 확인증 모달 ---------- */
+  const rsvModal = $("#rsvModal"), rsvBackdrop = $("#rsvBackdrop");
+  let rsvOpen = false;
+  function openReservation(id) {
+    const p = PLACES[id];
+    const r = p?.reservation;
+    if (!r) return;
+    $("#rsvBody").innerHTML = `
+      <div class="rsv-badge">✅ 予約確定済み（Reservation Confirmed）</div>
+      <h2 class="rsv-title">${esc(p.jp)}</h2>
+      <p class="rsv-greet">予約しております。<br>確認をお願いいたします。</p>
+      <dl class="rsv-list">
+        <div><dt>予約サイト</dt><dd>${esc(r.platform)}</dd></div>
+        <div><dt>予約番号</dt><dd class="rsv-code">${esc(r.reservationNo)}</dd></div>
+        <div><dt>お名前</dt><dd><b>${esc(r.name)}</b> 様</dd></div>
+        <div><dt>来店日時</dt><dd><b>${esc(r.dateJp)}</b></dd></div>
+        <div><dt>人数</dt><dd><b>${esc(r.guestsJp)}</b></dd></div>
+        ${r.phone ? `<div><dt>電話番号</dt><dd>${esc(r.phone)}</dd></div>` : ""}
+        ${r.requestJp ? `<div><dt>ご要望・備考</dt><dd>${esc(r.requestJp)}</dd></div>` : ""}
+      </dl>
+      ${(r.addressJp || r.shopTel) ? `<div class="rsv-shop">${r.addressJp ? `📍 ${esc(r.addressJp)}<br>` : ""}${r.shopTel ? `📞 TEL: ${esc(r.shopTel)}` : ""}</div>` : ""}
+      <button class="btn dark rsv-done" type="button" id="rsvDoneBtn">閉じる · 닫기</button>
+    `;
+    $("#rsvDoneBtn").onclick = () => closeReservation();
+    rsvBackdrop.hidden = false;
+    requestAnimationFrame(() => { rsvBackdrop.classList.add("show"); rsvModal.classList.add("open"); });
+    rsvModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    if (!rsvOpen) history.pushState({ rsv: 1 }, "");
+    rsvOpen = true;
+  }
+  function closeReservation(fromPop) {
+    if (!rsvOpen) return;
+    rsvOpen = false;
+    rsvModal.classList.remove("open"); rsvBackdrop.classList.remove("show");
+    rsvModal.setAttribute("aria-hidden", "true");
+    if (!sheetOpen) document.body.style.overflow = "";
+    setTimeout(() => { rsvBackdrop.hidden = true; }, 260);
+    if (!fromPop && history.state?.rsv) history.back();
+  }
+  addEventListener("popstate", () => { if (rsvOpen) closeReservation(true); });
+  rsvBackdrop.onclick = () => closeReservation();
+  $("#rsvClose").onclick = () => closeReservation();
 
   /* ---------- 지도 ---------- */
   let map, markers = {}, mapFilter = "all";

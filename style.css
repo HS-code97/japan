@@ -397,6 +397,33 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .sh-tips li:first-child { border-top: 0; }
 .sh-tips li::before { content: "❄"; position: absolute; left: 4px; color: var(--frost); }
 .sh-actions { display: flex; gap: 8px; margin-top: 18px; }
+.sh-rsv-wrap { margin-top: 16px; }
+.rsv-btn { background: #0f766e; color: #fff; cursor: pointer; }
+.sh-rsv-wrap .rsv-btn { width: 100%; }
+
+/* ---------- RESERVATION MODAL (JP) ---------- */
+.rsv-backdrop { position: fixed; inset: 0; z-index: 75; background: rgba(5,12,24,.68); backdrop-filter: blur(3px); opacity: 0; transition: opacity .25s; }
+.rsv-backdrop.show { opacity: 1; }
+.rsv-modal {
+  position: fixed; z-index: 80; left: 50%; top: 50%; width: calc(100% - 28px); max-width: 440px; max-height: 88svh;
+  transform: translate(-50%, -46%) scale(.96); opacity: 0; pointer-events: none; transition: .25s ease;
+  background: #fff; color: var(--ink); border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.rsv-modal.open { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: auto; }
+.rsv-head { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; background: var(--night); color: #fff; font-size: 13px; font-weight: 700; }
+.rsv-close { border: 0; background: rgba(255,255,255,.16); color: #fff; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; cursor: pointer; }
+.rsv-body { padding: 18px 18px 20px; overflow-y: auto; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif; }
+.rsv-badge { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #e6f6f4; color: #0f766e; font-size: 12px; font-weight: 800; }
+.rsv-title { margin: 10px 0 4px; font-size: 22px; font-family: "Noto Serif JP", serif; color: var(--ink); }
+.rsv-greet { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: var(--ink2); font-weight: 600; }
+.rsv-list { margin: 0; border-top: 1px solid var(--line); }
+.rsv-list > div { display: grid; grid-template-columns: 96px 1fr; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; line-height: 1.45; }
+.rsv-list dt { color: var(--ink3); font-weight: 700; }
+.rsv-list dd { margin: 0; color: var(--ink); word-break: break-word; }
+.rsv-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: 800; color: #0f766e; letter-spacing: .04em; }
+.rsv-shop { margin-top: 12px; padding: 10px 12px; border-radius: 12px; background: #f4f7fb; font-size: 12.5px; line-height: 1.55; color: var(--ink2); }
+.rsv-done { width: 100%; margin-top: 14px; cursor: pointer; }
 
 /* ---------- TOAST ---------- */
 .toast { position: fixed; z-index: 90; left: 50%; bottom: calc(var(--tabh) + 30px + var(--safe-b)); transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
