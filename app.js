@@ -313,6 +313,7 @@
         ${p.menu ? `<h4>${p.menu.adult ? "🍽️ 우리 가족 맞춤 메뉴" : "🍽️ 주문 팁"}</h4>${menuHTML(p)}` : ""}
         ${p.tips?.length ? `<h4>💡 알아두면 좋은 팁</h4><ul class="sh-tips">${p.tips.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
         ${p.reservation ? `<div class="sh-rsv-wrap"><button class="btn rsv-btn" type="button" data-rsv="${id}">🎫 예약 확인증 보기 (일본어 · 직원 제시용)</button></div>` : ""}
+        ${p.taxiCard ? `<div class="sh-rsv-wrap"><button class="btn taxi-btn" type="button" data-taxi="${id}">🚕 숙소 주소 보기 (일본어 · 택시 기사님 제시용)</button></div>` : ""}
         <div class="sh-actions">
           <a class="btn dark" href="${gmap(p.q || p.jp)}" target="_blank" rel="noopener">🗺️ 구글맵 길찾기</a>
           <button class="btn light" id="shOnMap">📍 지도에서 보기</button>
@@ -328,6 +329,8 @@
     $("#shOnMap").onclick = () => { closeSheet(); showView("map"); setTimeout(() => focusPlace(id), 350); };
     const shRsv = $("[data-rsv]", $("#sheetBody"));
     if (shRsv) shRsv.onclick = () => openReservation(id);
+    const shTaxi = $("[data-taxi]", $("#sheetBody"));
+    if (shTaxi) shTaxi.onclick = () => openTaxiCard(id);
     $("#sheetBody").scrollTop = 0;
     backdrop.hidden = false;
     requestAnimationFrame(() => { backdrop.classList.add("show"); sheet.classList.add("open"); });
@@ -432,6 +435,7 @@
     const p = PLACES[id];
     const r = p?.reservation;
     if (!r) return;
+    $(".rsv-head span", rsvModal).textContent = "🇯🇵 店員提示用 · 직원 제시용";
     $("#rsvBody").innerHTML = `
       <div class="rsv-badge">✅ 予約確定済み（Reservation Confirmed）</div>
       <h2 class="rsv-title">${esc(p.jp)}</h2>
@@ -446,6 +450,30 @@
         ${r.requestJp ? `<div><dt>ご要望・備考</dt><dd>${esc(r.requestJp)}</dd></div>` : ""}
       </dl>
       ${(r.addressJp || r.shopTel) ? `<div class="rsv-shop">${r.addressJp ? `📍 ${esc(r.addressJp)}<br>` : ""}${r.shopTel ? `📞 TEL: ${esc(r.shopTel)}` : ""}</div>` : ""}
+      <button class="btn dark rsv-done" type="button" id="rsvDoneBtn">閉じる · 닫기</button>
+    `;
+    $("#rsvDoneBtn").onclick = () => closeReservation();
+    rsvBackdrop.hidden = false;
+    requestAnimationFrame(() => { rsvBackdrop.classList.add("show"); rsvModal.classList.add("open"); });
+    rsvModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    if (!rsvOpen) history.pushState({ rsv: 1 }, "");
+    rsvOpen = true;
+  }
+  function openTaxiCard(id) {
+    const p = PLACES[id];
+    const t = p?.taxiCard;
+    if (!t) return;
+    $(".rsv-head span", rsvModal).textContent = "🚕 運転手様提示用 · 택시 기사님 제시용";
+    $("#rsvBody").innerHTML = `
+      <div class="rsv-badge taxi-badge">${esc(t.badge)}</div>
+      <p class="taxi-lead">${esc(t.title)}</p>
+      <div class="taxi-addr-box">${esc(t.addressJp)}</div>
+      <dl class="rsv-list">
+        ${t.buildingJp ? `<div><dt>施設名</dt><dd><b>${esc(t.buildingJp)}</b></dd></div>` : ""}
+        ${t.landmarkJp ? `<div><dt>目印</dt><dd>${esc(t.landmarkJp)}</dd></div>` : ""}
+        ${t.noteJp ? `<div><dt>備考</dt><dd>${esc(t.noteJp)}</dd></div>` : ""}
+      </dl>
       <button class="btn dark rsv-done" type="button" id="rsvDoneBtn">閉じる · 닫기</button>
     `;
     $("#rsvDoneBtn").onclick = () => closeReservation();

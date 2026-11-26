@@ -424,6 +424,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .rsv-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: 800; color: #0f766e; letter-spacing: .04em; }
 .rsv-shop { margin-top: 12px; padding: 10px 12px; border-radius: 12px; background: #f4f7fb; font-size: 12.5px; line-height: 1.55; color: var(--ink2); }
 .rsv-done { width: 100%; margin-top: 14px; cursor: pointer; }
+.taxi-btn { background: #1d4ed8; color: #fff; cursor: pointer; }
+.sh-rsv-wrap .taxi-btn { width: 100%; }
+.taxi-badge { background: #eff6ff; color: #1d4ed8; }
+.taxi-lead { margin: 12px 0 10px; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.45; }
+.taxi-addr-box {
+  margin: 0 0 14px; padding: 14px 16px; border-radius: 14px;
+  background: #f8fafc; border: 2px solid #1d4ed8;
+  font-size: 20px; font-weight: 800; line-height: 1.45; color: #0f172a;
+  letter-spacing: .01em; word-break: keep-all; overflow-wrap: anywhere;
+}
 
 /* ---------- TOAST ---------- */
 .toast { position: fixed; z-index: 90; left: 50%; bottom: calc(var(--tabh) + 30px + var(--safe-b)); transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
