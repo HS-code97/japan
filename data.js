@@ -557,7 +557,7 @@ const PLACES = {
   },
   kaihe: {
     type: "food", emoji: "🍱", name: "카이헤(海へ) 삿포로역 지하상가 아피아점", jp: "海へ 札幌駅地下街アピア店",
-    img: "https://imgfp.hotp.jp/IMGH/68/35/P051846835/P051846835_480.jpg",
+    img: "https://imgfp.hotp.jp/IMGH/57/40/P052045740/P052045740_480.jpg",
     photoCredit: "공식 매장/음식 사진 · 海へ 札幌駅地下街アピア店 (Hot Pepper)",
     lat: 43.067012, lng: 141.3499595,
     area: "삿포로역 직결 (아피아)",
@@ -634,7 +634,7 @@ const PLACES = {
   },
   umiheMinami4: {
     type: "food", emoji: "🐟", name: "우미헤(海へ) 스스키노 미나미4조점", jp: "海へ すすきの南4条店",
-    img: "https://imgfp.hotp.jp/IMGH/68/35/P051846835/P051846835_480.jpg",
+    img: "https://imgfp.hotp.jp/IMGH/94/38/P051919438/P051919438_480.jpg",
     photoCredit: "공식 매장/음식 사진 · 海へ すすきの南4条店 (Hot Pepper)",
     lat: 43.05552, lng: 141.35517,
     area: "스스키노 · PaL 맞은편 도보 1~2분 (남4서2)",
