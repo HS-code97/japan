@@ -43,7 +43,8 @@ const PLACES = {
   },
   hanamomiji: {
     type: "stay", emoji: "♨️", name: "조잔케이 하나모미지", jp: "定山渓 花もみじ",
-    img: U + "1/1f/JozankeiOnsen2004-12.jpg", credit: "JozankeiOnsen2004-12.jpg",
+    img: "https://shikanoyu.co.jp/common/img/hana/jpg/meal/nishiki/main.jpg",
+    photoCredit: "공식 석식 사진 · 定山渓温泉 花もみじ",
     lat: 42.9659, lng: 141.1620, area: "조잔케이 온천",
     desc: "삿포로의 안방 온천마을. 강을 따라 김이 피어오르는 설경 속 온천에서 여행의 마지막 밤을 보냅니다.",
     tips: ["삿포로역 15:00 무료 셔틀 ‘시카노유호(鹿の湯号)’ 예약 완료 (총 10명: BU23042 · BU23043)", "돌아오는 셔틀(10:00발) 이용 여부는 체크인 시 확인", "노천탕은 눈 오는 밤·이른 아침이 최고"],
@@ -222,8 +223,8 @@ const PLACES = {
   /* ---------- 식당 ---------- */
   rikyu: {
     type: "food", emoji: "🐑", name: "숯불 징기스칸 리큐 (狸九)", jp: "炭焼ジンギスカン 狸九",
-    img: W + "1/18/Jingisukan_%2832663955448%29.jpg/960px-Jingisukan_%2832663955448%29.jpg", credit: "Jingisukan_(32663955448).jpg",
-    photoCredit: "대표 이미지(예시) · 사진: Raita Futo · CC BY 2.0 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/84/33/P051158433/P051158433_480.jpg",
+    photoCredit: "공식 매장/음식 사진 · 炭焼ジンギスカン 狸九 (Hot Pepper)",
     lat: 43.0574, lng: 141.3437,
     area: "다누키코지 9초메 B1 · 숙소 도보 약 6분",
     desc: "✅ [예약 확정] 2027.01.08(금) 20:15 · 10명 (테이블 금연석 · 좌석만 예약). 남3조 서9초메 빌딩 지하 1층, 칠륜 숯불에 굽는 생램 징기스칸. 매일 17:00~23:00 (L.O. 22:30), 38석·전석 금연, 아이·유아 OK.",
@@ -248,8 +249,8 @@ const PLACES = {
   },
   shibetsuBbq: {
     type: "food", emoji: "🐑", name: "시베쓰 바비큐 (士別バーベキュー)", jp: "士別バーベキュー",
-    img: W + "3/3c/Jingisukan_%2846537378761%29.jpg/960px-Jingisukan_%2846537378761%29.jpg", credit: "Jingisukan_(46537378761).jpg",
-    photoCredit: "대표 이미지(예시) · 사진: Raita Futo · CC BY 2.0 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/74/44/P043487444/P043487444_480.jpg",
+    photoCredit: "공식 매장/음식 사진 · 士別バーベキュー 本店 (Hot Pepper)",
     lat: 43.0574, lng: 141.3463,
     area: "다누키코지 7초메 아케이드 · 숙소 도보 약 8분",
     desc: "남3조 서7초메 다누키코지 아케이드 안. 홋카이도산 사포크 양을 숯불로 굽는 인기 가게(Tabelog 3.49). 평일 16:00~23:00 (L.O. 22:15), 62석·전석 금연, 아이 OK·아이용 식기 있어요.",
@@ -263,7 +264,8 @@ const PLACES = {
   },
   hassen: {
     type: "food", emoji: "🐑", name: "핫센 오도리 (八仙 大通)", jp: "八仙 大通",
-    img: U + "b/bc/Jingisukan_japanese_mutton_barbecue.jpg", credit: "Jingisukan_japanese_mutton_barbecue.jpg",
+    img: "https://sapporo-bier-garten.jp/wp-content/uploads/2025/03/ogp.jpg",
+    photoCredit: "공식 사진 · 삿포로 비어가든 (サッポロビール園)",
     photoCredit: "대표 이미지(예시) · 사진: Jesper Rautell Balle · CC BY 3.0 · Wikimedia Commons",
     lat: 43.0593, lng: 141.3370,
     area: "남1조 서14초메 · 숙소 도보 약 10분",
@@ -278,7 +280,8 @@ const PLACES = {
   },
   garaku: {
     type: "food", emoji: "🍛", name: "스프카레 GARAKU", jp: "スープカレー GARAKU",
-    img: W + "4/42/%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC_Soup_Curry.jpg/960px-%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AC%E3%83%BC_Soup_Curry.jpg", credit: "スープカレー_Soup_Curry.jpg",
+    img: "https://imgfp.hotp.jp/IMGH/85/99/P037288599/P037288599_480.jpg",
+    photoCredit: "공식 메뉴 사진 · スープカレー GARAKU (Hot Pepper)",
     lat: 43.0579, lng: 141.3549, area: "다누키코지 2초메",
     desc: "삿포로 소울푸드 ‘스프카레’ 대표 맛집. 큼직한 홋카이도 채소와 부드러운 고기가 들어간 향신료 수프에 밥을 적셔 먹어요.",
     tips: ["저녁 오픈 직후 도착하거나 대기표 먼저 받기", "매운맛 단계를 고를 수 있어요 (0~40번대)", "10명은 테이블 나눠 앉기"],
@@ -291,7 +294,8 @@ const PLACES = {
   },
   kinotoya: {
     type: "food", emoji: "🍦", name: "기노토야 (치즈타르트·소프트)", jp: "きのとや 大通公園店",
-    img: W + "6/6a/Soft_Ice_cream.jpg/960px-Soft_Ice_cream.jpg", credit: "Soft_Ice_cream.jpg",
+    img: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/KINOTOYA%2C_Sapporo%2C_Hokkaido%2C_Japan%2C_%E6%9C%AD%E5%B9%8C%2C_%E5%8C%97%E6%B5%B7%E9%81%93%2C_%E6%97%A5%E6%9C%AC%2C_%E7%84%BC%E3%81%8D%E3%81%9F%E3%81%A6%E3%83%81%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%AB%E3%83%88%2C_%E3%81%8D%E3%81%AE%E3%81%A8%E3%82%84%2C_%E6%96%B0%E5%8D%83%E6%AD%B3%E7%A9%BA%E6%B8%AF%E5%BA%97%2C_%E3%81%95%E3%81%A3%E3%81%BD%E3%82%8D%E3%81%97%2C_%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%2C_%E3%81%AB%E3%81%A3%E3%81%BD%E3%82%93%2C_%E3%81%AB%E3%81%BB%E3%82%93_%2816720983681%29.jpg/960px-thumbnail.jpg",
+    photoCredit: "기노토야 갓 구운 치즈타르트 · 사진: bryan... · CC BY-SA 2.0 · Wikimedia Commons",
     imgNote: "사진은 소프트아이스크림 (참고 이미지)",
     lat: 43.0606, lng: 141.3515, area: "오도리",
     desc: "삿포로 대표 양과자점. 갓 구운 치즈타르트와 우유 맛 진한 ‘극상 소프트’. 홋카이도는 한겨울에도 소프트아이스크림!",
@@ -305,8 +309,8 @@ const PLACES = {
   },
   kaniya: {
     type: "food", emoji: "🦀", name: "삿포로 카니야 본점 (게 요리)", jp: "札幌かに家 本店",
-    img: U + "a/ad/KaniNabe_Kanidouraku.jpg", credit: "KaniNabe_Kanidouraku.jpg",
-    photoCredit: "대표 이미지(예시) · 사진: Kykk wiki · CC0 · Wikimedia Commons (게 나베·카니스키)",
+    img: "https://imgfp.hotp.jp/IMGH/69/53/P048366953/P048366953_480.jpg",
+    photoCredit: "공식 매장/음식 사진 · 札幌かに家 本店 (Hot Pepper)",
     lat: 43.0562, lng: 141.3554, area: "스스키노 · 남4서2",
     desc: "✅ [예약 확정] 2027.01.10(일) 12:00 · 10명 (스미레 코스 10인 · 호리고타쓰 인접 2테이블(5명씩 분승) 배정 확정). 지상 7층·지하 2층 550석 규모의 대형 게 요리 전문점. 런치 11:00~15:00 (L.O. 14:00), 연중무휴.",
     tips: ["✅ 핫페퍼 구르메 예약 확정 (예약의뢰번호: RAZ070262 / 대표자: HWANG HYEONSEOK)", "매장 확정 안내: 점심 가이세키 ‘스미레(すみれ)’ 10인 접수 완료 · 호리고타쓰 인접 2테이블(5명씩 착석) 준비", "기존 1/9(토) 13:00 예약(RAY976002)은 11/24 취소 완료", "마이페이지 온라인 취소 기한: 2027.01.09(토) 17:00까지", "개인실/특정 좌석 이용 시 음식값의 10% 서비스료가 부과될 수 있어요", "게를 못 먹거나 어린이를 위한 메뉴(와라베 벤토·히다규 샤부샤부 등)도 당일 확인 가능해요"],
@@ -330,7 +334,8 @@ const PLACES = {
   },
   naruto: {
     type: "food", emoji: "🍗", name: "와카도리지다이 나루토 (오타루)", jp: "若鶏時代なると 本店",
-    img: W + "e/e6/Chicken_karaage_003.jpg/960px-Chicken_karaage_003.jpg", credit: "Chicken_karaage_003.jpg",
+    img: "https://otaru-naruto.jp/img/menu.jpg",
+    photoCredit: "공식 명물 반마리 치킨(若鶏半身揚げ) · 若鶏時代なると 本店",
     imgNote: "사진은 가라아게 (참고 이미지)",
     lat: 43.1960, lng: 140.9953, area: "오타루역 도보 5분",
     desc: "영계 반 마리를 통째로 튀긴 ‘와카도리 한미아게’로 60년 넘게 사랑받는 오타루 명물. 초밥·정식도 있어 입맛 다른 가족 모두 OK. 좌석이 많아 단체도 편해요.",
@@ -357,7 +362,8 @@ const PLACES = {
   },
   hanamaru: {
     type: "food", emoji: "🍣", name: "회전초밥 네무로 하나마루", jp: "回転寿司 根室花まる JRタワーステラプレイス店",
-    img: W + "4/49/Sushi_conyeyor_chain_1.jpg/960px-Sushi_conyeyor_chain_1.jpg", credit: "Sushi_conyeyor_chain_1.jpg",
+    img: "https://www.sushi-hanamaru.com/store/files/s03.jpg",
+    photoCredit: "공식 매장 사진 · 根室花まる JRタワーステラプレイス店",
     imgNote: "사진은 회전초밥 (참고 이미지)",
     lat: 43.0682, lng: 141.3519, area: "삿포로역 스텔라플레이스 6층",
     desc: "홋카이도 동쪽 끝 네무로항에서 온 회전초밥 명가. ‘회전초밥 맞아?’ 싶은 퀄리티.",
@@ -384,8 +390,8 @@ const PLACES = {
   },
   parfait: {
     type: "food", emoji: "🍨", name: "파르페테리아 PaL (시메 파르페)", jp: "パフェテリア PaL(パル)",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/SAKURAKO_-_Parfait._%2848735970281%29.jpg/960px-SAKURAKO_-_Parfait._%2848735970281%29.jpg", credit: "SAKURAKO_-_Parfait._(48735970281).jpg",
-    photoCredit: "대표 이미지(예시) · 사진: MIKI Yoshihito from Sapporo City, Hokkaido, JAPAN · CC BY 2.0 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/23/12/P043532312/P043532312_480.jpg",
+    photoCredit: "공식 파르페 사진 · Parfaiteria PaL (Hot Pepper)",
     lat: 43.0562847, lng: 141.3559446, area: "스스키노 · 남4서2 빌딩 6층",
     desc: "저녁 먹고 ‘마무리(시메)’로 예술작품 같은 파르페를 먹는 삿포로만의 문화. 남4서2 빌딩 6층, 스스키노역 도보 3분(호스이스스키노역 도보 1분). 일요일은 18:00~24:00(금·토는 새벽 2시까지) 영업, 연중무휴, 81석이에요.",
     tips: ["아이는 23시까지 입장할 수 있어요", "일반 예약은 불가하지만 개인실 대관(최대 16명, 90분, ¥15,000 — 10명이면 1인당 약 ¥1,500)이 가능하니 사전에 문의하세요", "줄이 길면 5명씩 2팀으로 나눠 입장하세요"],
@@ -439,7 +445,8 @@ const PLACES = {
   },
   seico: {
     type: "food", emoji: "🏪", name: "세이코마트 (홋카이도 편의점)", jp: "セイコーマート",
-    img: W + "a/a0/Melonpan_on_the_plastic_bag.jpg/960px-Melonpan_on_the_plastic_bag.jpg", credit: "Melonpan_on_the_plastic_bag.jpg",
+    img: "https://www.seicomart.co.jp/images/instore/hc/hot_01_main.jpg",
+    photoCredit: "공식 핫셰프(HOT CHEF) · 세이코마트",
     imgNote: "사진은 멜론빵 (참고 이미지)",
     lat: 43.0541, lng: 141.3412, area: "숙소 근처",
     desc: "홋카이도 사람들이 가장 사랑하는 편의점. 매장에서 직접 만드는 ‘핫셰프’ 도시락·주먹밥이 명물. 숙소 아침은 여기서!",
@@ -457,8 +464,8 @@ const PLACES = {
      menu.order = 확실한 메뉴 정보가 없을 때 쓰는 ‘주문 팁’ */
   daiso: {
     type: "food", emoji: "🍚", name: "니조시장 다이소 (大磯)", jp: "二条市場 大磯",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B42.JPG/960px-%E4%BA%8C%E6%9D%A1%E5%B8%82%E5%A0%B42.JPG", credit: "二条市場2.JPG",
-    photoCredit: "사진: K. Takeda · CC BY-SA 3.0 · Wikimedia Commons (니조시장 내부 모습)",
+    img: "https://ohiso.jp/_sys/wp-content/themes/ohiso/resources/images/home/recommend01.jpg",
+    photoCredit: "공식 해산물 덮밥 사진 · 二条市場 大磯",
     lat: 43.0585776, lng: 141.3589332,
     area: "니조 시장 안",
     desc: "니조 시장 안에 있는 43석 식당. 단체 OK, 수요일 휴무라 토요일은 영업해요. 시장 안이라 따로 이동할 필요가 없어요.",
@@ -468,8 +475,8 @@ const PLACES = {
   },
   umier: {
     type: "food", emoji: "🍦", name: "우미에르 세컨드", jp: "ウミエールセカンド",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/%E7%99%BD%E4%BA%95%E8%BE%B2%E5%9C%92_%E3%80%8C%E8%9B%8D%E3%81%AE%E3%82%BD%E3%83%95%E3%83%88%E3%83%9F%E3%83%AB%E3%82%AF%E3%80%8D_%28941527512%29.jpg/960px-%E7%99%BD%E4%BA%95%E8%BE%B2%E5%9C%92_%E3%80%8C%E8%9B%8D%E3%81%AE%E3%82%BD%E3%83%95%E3%83%88%E3%83%9F%E3%83%AB%E3%82%AF%E3%80%8D_%28941527512%29.jpg", credit: "白井農園_「蛍のソフトミルク」_(941527512).jpg",
-    photoCredit: "대표 이미지(예시) · 사진: yoppy · CC BY 2.0 · Wikimedia Commons",
+    img: "https://rurubu.jp/img_srw/andmore/images/0000159311/l_23x7WyN6YulIRrN1R13laR7uINoJDjJTSfd6epyW.png",
+    photoCredit: "UMIERE 2nd 밀크 소프트아이스크림 · るるぶ&more",
     lat: 43.0575288, lng: 141.3515516,
     area: "다누키코지 상점가",
     desc: "홋카이도 유기농 우유 100% 소프트아이스크림. 실내라 추위 걱정이 없고, 점심 장소(스스키노)로 가는 길목이에요.",
@@ -480,8 +487,8 @@ const PLACES = {
   },
   treasure: {
     type: "food", emoji: "🍛", name: "스프카레 트레져", jp: "スープカレー トレジャー",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Chicken_vegetable_soup_curry_%282813142985%29.jpg/960px-Chicken_vegetable_soup_curry_%282813142985%29.jpg", credit: "Chicken_vegetable_soup_curry_(2813142985).jpg",
-    photoCredit: "대표 이미지(예시) · 사진: pelican from Tokyo, Japan · CC BY-SA 2.0 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/02/59/P037350259/P037350259_480.jpg",
+    photoCredit: "공식 메뉴 사진 · スープカレー TREASURE (Hot Pepper)",
     lat: 43.0582237, lng: 141.3568988,
     area: "오도리역 도보 3분",
     desc: "가라쿠의 자매점. 오도리역에서 도보 3분이고 대기가 적은 편이에요. 맵기 1~40단계라 초등학생도 먹을 수 있어요.",
@@ -492,8 +499,8 @@ const PLACES = {
   },
   kaniShogun: {
     type: "food", emoji: "🦀", name: "카니쇼군 삿포로 본점", jp: "かに将軍 札幌本店",
-    img: U + "b/ba/Susukino_at_night.jpg", credit: "Susukino_at_night.jpg",
-    photoCredit: "사진: hwoarang17 · 퍼블릭 도메인 · Wikimedia Commons (가게 주변 스스키노 전경)",
+    img: "https://imgfp.hotp.jp/IMGH/25/41/P001022541/P001022541_480.jpg",
+    photoCredit: "공식 매장/음식 사진 · かに将軍 札幌本店 (Hot Pepper)",
     lat: 43.0562255, lng: 141.3551605,
     area: "스스키노역 도보 2분",
     desc: "스스키노역에서 도보 2분, 개별룸이 있는 게 요리점. 오도리에서 걸어서 갈 수 있어요.",
@@ -515,8 +522,8 @@ const PLACES = {
   },
   toriton: {
     type: "food", emoji: "🍣", name: "회전초밥 토리톤 기타8조 광성점", jp: "回転寿司 トリトン 北8条光星店",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/TORITON_-_Teine_01.jpg/960px-TORITON_-_Teine_01.jpg", credit: "TORITON_-_Teine_01.jpg",
-    photoCredit: "사진: ノボホショコロトソ · CC BY 4.0 · Wikimedia Commons (테이네점)",
+    img: "https://toriton-kita1.jp/wordpress/wp-content/uploads/2022/10/%E2%96%A0%E5%8C%978%E6%9D%A1%E5%85%89%E6%98%9F%E5%BA%97.jpg",
+    photoCredit: "공식 매장 사진 · トリトン 北8条光星店",
     lat: 43.0727363, lng: 141.3614178,
     area: "삿포로역에서 택시",
     desc: "11:00~22:00 영업하는 회전초밥집. 예약은 불가하지만 2명이라 대기가 짧아요.",
@@ -526,8 +533,8 @@ const PLACES = {
   },
   kitaichiHall: {
     type: "food", emoji: "☕", name: "기타이치 홀", jp: "北一ホール",
-    img: "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%85%AB%E6%AE%B5%E5%86%B0%E6%B7%87%E6%B7%8B%2C_8%E6%AE%B5%E5%86%B0%E6%B7%87%E6%B7%8B%2C_%E5%8C%97%E4%B8%80%E7%A1%9D%E5%AD%90%E4%B8%89%E8%99%9F%E9%A4%A8%2C_%E5%B0%8F%E6%A8%BD%2C_%E5%8C%97%E6%B5%B7%E9%81%93%2C_%E6%97%A5%E6%9C%AC%2C_Kitaichi_glass%2C_Otaru%2C_Hokkaido%2C_Japan%2C_%E5%8C%97%E4%B8%80%E7%A1%9D%E5%AD%90%E4%B8%89%E5%8F%B7%E9%A4%A8%E3%83%86%E3%83%A9%E3%82%B9%2C_%E3%81%8A%E3%81%9F%E3%82%8B%E3%81%97%2C_%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%2C_%E3%81%AB%E3%81%A3%E3%81%BD%E3%82%93%2C_%E3%81%AB%E3%81%BB%E3%82%93_%2833938300028%29.jpg?width=960", credit: "八段冰淇淋,_8段冰淇淋,_北一硝子三號館,_小樽,_北海道,_日本,_Kitaichi_glass,_Otaru,_Hokkaido,_Japan,_北一硝子三号館テラス,_おたるし,_ほっかいどう,_にっぽん,_にほん_(33938300028).jpg",
-    photoCredit: "사진: bryan... · CC BY-SA 2.0 · Wikimedia Commons (같은 건물 북일유리 3호관의 소프트아이스크림)",
+    img: "https://kitaichiglass.co.jp/wp-content/uploads/2021/01/hall_slide4-900x504.jpg",
+    photoCredit: "공식 매장 내부 사진 · 北一ホール (석유 램프 홀)",
     lat: 43.1922675, lng: 141.007334,
     area: "오타루 사카이마치 7-26",
     desc: "램프 조명이 있는 167석 카페. 09:30~17:00 주문 가능, 파르페·케이크·밀크티. 12/29~1/7만 휴무라 1/9도 정상 영업해요.",
@@ -550,8 +557,8 @@ const PLACES = {
   },
   kaihe: {
     type: "food", emoji: "🍱", name: "카이헤(海へ) 삿포로역 지하상가 아피아점", jp: "海へ 札幌駅地下街アピア店",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shashimi_teishoku.jpg/960px-Shashimi_teishoku.jpg", credit: "Shashimi_teishoku.jpg",
-    photoCredit: "대표 이미지(예시) · 사진: Mkill(추정) · CC BY 2.5 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/68/35/P051846835/P051846835_480.jpg",
+    photoCredit: "공식 매장/음식 사진 · 海へ 札幌駅地下街アピア店 (Hot Pepper)",
     lat: 43.067012, lng: 141.3499595,
     area: "삿포로역 직결 (아피아)",
     desc: "삿포로역 직결 해산물 이자카야. 완전 개인실이 있고 24시간 인터넷 예약이 가능해요.",
@@ -612,8 +619,8 @@ const PLACES = {
   },
   kushidoriChuo: {
     type: "food", emoji: "🍢", name: "야키토리 쿠시도리 중앙본점", jp: "やきとり専門 串鳥 中央本店",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shashimi_teishoku.jpg/960px-Shashimi_teishoku.jpg", credit: "Shashimi_teishoku.jpg",
-    photoCredit: "대표 이미지(예시) · 사진: Mkill(추정) · CC BY 2.5 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/21/40/P051462140/P051462140_480.jpg",
+    photoCredit: "공식 메뉴 사진 · やきとり専門 串鳥 中央本店 (Hot Pepper)",
     lat: 43.05625, lng: 141.35595,
     area: "스스키노 · PaL과 같은 건물 (남4서2 빌딩 1F)",
     desc: "파르페테리아 PaL(6층)과 바로 같은 건물 1층에 있는 삿포로 로컬 숯불 야키토리 명가. 전석 금연, 아이 동반 OK, 토요일도 15:30~23:30 영업, 핫페퍼 10명 예약 가능.",
@@ -627,8 +634,8 @@ const PLACES = {
   },
   umiheMinami4: {
     type: "food", emoji: "🐟", name: "우미헤(海へ) 스스키노 미나미4조점", jp: "海へ すすきの南4条店",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Shashimi_teishoku.jpg/960px-Shashimi_teishoku.jpg", credit: "Shashimi_teishoku.jpg",
-    photoCredit: "대표 이미지(예시) · 사진: Mkill(추정) · CC BY 2.5 · Wikimedia Commons",
+    img: "https://imgfp.hotp.jp/IMGH/68/35/P051846835/P051846835_480.jpg",
+    photoCredit: "공식 매장/음식 사진 · 海へ すすきの南4条店 (Hot Pepper)",
     lat: 43.05552, lng: 141.35517,
     area: "스스키노 · PaL 맞은편 도보 1~2분 (남4서2)",
     desc: "PaL 바로 옆 건물(다이멕스플라자 5번관 2·3층)의 대형 홋카이도 해산물·향토요리 전문점(170석). 전석 금연(흡연실 별도), 호리고타쓰 개인실 완비, 토·일 모두 16:00~24:00 영업, 10명 단체 예약이 매우 수월해요.",
