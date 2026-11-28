@@ -18,7 +18,7 @@
   else addEventListener("resize", sizeHeader);
   const load = file => new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = file + "?v=plans-2";
+    script.src = file + "?v=plans-3";
     script.onload = resolve;
     script.onerror = () => reject(new Error(file));
     document.head.appendChild(script);
