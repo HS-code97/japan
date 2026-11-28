@@ -2,9 +2,12 @@
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const planId = window.CURRENT_PLAN || "1";
+  // 쇼핑·준비물·환율은 이 폰의 공통 체크, 날짜·팀·가족 미션은 안별 저장.
+  const storageKey = k => /^(day$|team$|mission:)/.test(k) ? "sp27:plan:" + planId + ":" + k : "sp27:" + k;
   const store = {
-    get(k, d) { try { const v = localStorage.getItem("sp27:" + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
-    set(k, v) { try { localStorage.setItem("sp27:" + k, JSON.stringify(v)); } catch {} },
+    get(k, d) { try { let v = localStorage.getItem(storageKey(k)); if (v === null && planId === "1") v = localStorage.getItem("sp27:" + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(storageKey(k), JSON.stringify(v)); } catch {} },
   };
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const gmap = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
@@ -129,13 +132,14 @@
     if (activeChip) scrollDayChipToCenter(activeChip, true);
     store.set("day", i);
     renderDay();
+    updatePlanLinks();
   }
   function getDayScheduleTop() {
     const bar = $("#daybarWrap");
     if (!bar) return 0;
     const ov = $("#overview");
     if (ov) {
-      return ov.getBoundingClientRect().bottom + window.scrollY;
+      return ov.getBoundingClientRect().bottom + window.scrollY - $("#planSelector").getBoundingClientRect().height;
     }
     let top = 0, el = bar;
     while (el) { top += el.offsetTop; el = el.offsetParent; }
@@ -626,17 +630,27 @@
     scrollTo({ top: 0, behavior: "instant" in document.documentElement.style ? "instant" : "auto" });
     if (v === "map") { initMap(); setTimeout(() => map && map.invalidateSize(), 60); }
     store.set("view", v);
+    updatePlanLinks();
   }
   $$(".tab").forEach(t => t.onclick = () => showView(t.dataset.view));
+
+  /* ---------- 일정안 전환 ---------- */
+  function updatePlanLinks() {
+    const view = $(".view.active")?.id.replace("view-", "") || "plan";
+    $$("[data-plan]").forEach(button => {
+      button.href = window.JAPAN_PLANS.link(location.href, button.dataset.plan, curDay, view);
+    });
+  }
 
   /* ---------- 공유 / 토스트 ---------- */
   let tt;
   function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("show"), 1600); }
   $("#shareBtn").onclick = async () => {
-    const data = { title: "❄️ 삿포로, 겨울 동화", text: "세 가족 삿포로 여행 일정 (2027.1.8–1.12)", url: location.href };
+    const shareURL = window.JAPAN_PLANS.share(location.href);
+    const data = { title: "❄️ 삿포로, 겨울 동화", text: "세 가족 삿포로 여행 일정 (2027.1.8–1.12)", url: shareURL };
     try {
       if (navigator.share) await navigator.share(data);
-      else { await navigator.clipboard.writeText(location.href); toast("링크를 복사했어요 📋"); }
+      else { await navigator.clipboard.writeText(shareURL); toast("링크를 복사했어요 📋"); }
     } catch {}
   };
 
@@ -658,6 +672,13 @@
   })();
   snow(); countdown(); overview(); daybar();
   const ti = todayIndex();
-  selectDay(ti >= 0 ? ti : store.get("day", 0));
+  const params = new URL(location.href).searchParams;
+  const requestedDay = params.has("day") && /^\d+$/.test(params.get("day")) ? Number(params.get("day")) : -1;
+  const savedDay = store.get("day", 0);
+  const initialDay = requestedDay >= 0 && requestedDay < DAYS.length ? requestedDay : ti >= 0 ? ti : savedDay;
+  selectDay(Number.isInteger(initialDay) && initialDay >= 0 && initialDay < DAYS.length ? initialDay : 0);
   foodView(); shopView(); infoView();
+  const requestedView = params.get("view");
+  if (["plan", "map", "food", "shop", "info"].includes(requestedView)) showView(requestedView);
+  updatePlanLinks();
 })();

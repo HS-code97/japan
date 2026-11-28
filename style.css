@@ -129,7 +129,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ---------- DAY BAR ---------- */
 .daybar-wrap {
-  position: sticky; top: 0; z-index: 20; padding: 10px 0 10px;
+  position: sticky; top: var(--plan-selector-height, 116px); z-index: 20; padding: 10px 0 10px;
   background: linear-gradient(180deg, rgba(10,22,40,.96) 70%, rgba(10,22,40,0));
   backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
@@ -449,4 +449,32 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 @media (prefers-reduced-motion: reduce) {
   .opt-wrap, .opt-body, .opt-tab { transition: none; }
+}
+
+/* ---------- 세 가족 일정안 비교: 모든 메뉴에서 유지 ---------- */
+.plan-selector {
+  position: sticky; top: 0; z-index: 85; max-width: 560px; margin: 0 auto;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;
+  background: rgba(10,22,40,.96); color: #fff;
+  border-bottom: 1px solid rgba(207,230,255,.18);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+.plan-buttons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.plan-button {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 8px 4px; border-radius: 12px;
+  text-decoration: none; font-weight: 700; font-size: 15px;
+  color: var(--ice); background: var(--night2); border: 1px solid rgba(207,230,255,.25);
+}
+.plan-button.active { color: var(--night); background: var(--ice); border-color: var(--ice); }
+.plan-button:focus-visible { outline: 3px solid var(--lamp); outline-offset: 3px; }
+.plan-current { margin: 7px 0 1px; text-align: center; font-size: 13px; font-weight: 700; }
+.plan-hint { margin: 0; text-align: center; font-size: 11px; color: #b7cbe4; }
+
+/* 상세창에서도 일정안 선택 영역은 가리지 않습니다. */
+.sheet-backdrop, .rsv-backdrop { top: var(--plan-selector-height, 116px); }
+.sheet { max-height: calc(100svh - var(--plan-selector-height, 116px) - 12px); }
+.rsv-modal {
+  top: calc(50% + var(--plan-selector-height, 116px) / 2);
+  max-height: calc(100svh - var(--plan-selector-height, 116px) - 24px);
 }

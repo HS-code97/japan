@@ -2,3 +2,7 @@
 00_PROJECT.md
 01_draft/
 02_audit/
+
+# 로컬 미리보기·검증 결과 (소스 테스트는 유지)
+preview-*.png
+tests/browser-results.json
